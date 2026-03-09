@@ -13,31 +13,39 @@ class Fattura:
     numero_fattura: str
     data: date
 
-    def genera_fattura(self):
+    def genera_fattura(self) -> str:
+        """Genera il testo della fattura."""
         linee = [
-            f"="*60,
+            "="*60,
             #intestazione della fattura, ovvero data e num fattura
-            f"Fattura no. {self.numero_fattura} del {self.data}",
+            f"FATTURA N. {self.numero_fattura}".center(60),
+            f"Data: {self.data.strftime('%d/%m/%Y')}".center(60),
             f"=" * 60,
+            "",
             #dettagli del cliente
             f"Cliente: {self.ordine.cliente.name}",
             f"Categoria: {self.ordine.cliente.categoria}",
             f"Mail: {self.ordine.cliente.email}",
-            f"DETTAGLIO ORDINE"
+            "",
+            "-"*60,
+            f"DETTAGLIO PRODOTTI",
+            "-"*60
         ]
-        for i, riga in enumerate(self.ordine.righe):
+        for i, riga in enumerate(self.ordine.righe,1): #Inizia da 1 la numerazione
             linee.append(
-                f"{i+1}. "
-                f"{riga.prodotto.name}"
-                f"Q.tà {riga.quantita} x {riga.prodotto.prezzo_unitario} = "
-                f"Tot. {riga.totale_riga()}"
+                f"{i}. {riga.prodotto.name:<22}"
+                f"Q.tà {riga.quantita:>3} x {riga.prodotto.prezzo_unitario:>8.2f} = "
+                f"Tot. {riga.totale_riga():>10.2f}$"
             )
+
         linee.extend([
-            f"-"*60,
+            "-"*60,
+            "",
             f"Totale netto: {self.ordine.totale_netto()}",
             f"IVA (22%): {self.ordine.totale_netto()*0.22}",
             f"Totale lordo: {self.ordine.totale_lordo(0.22)}",
-            f"=" * 60]
+            "",
+            "=" * 60]
         )
         return "\n".join(linee)
 
