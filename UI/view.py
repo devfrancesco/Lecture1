@@ -21,8 +21,8 @@ class View:
 
         #Cliente
         self._txtInNomeC = ft.TextField(label="Nome cliente", width=200)
-        self._txtMail = ft.TextField(label="Mail", width=200)
-        self._txtCategoria = ft.TextField(label="Categoria", width=200)
+        self._txtInMail = ft.TextField(label="Mail", width=200)
+        self._txtInCategoria = ft.TextField(label="Categoria", width=200)
         row2 = ft.Row([self._txtInNomeC, self._txtMail, self._txtCategoria],
                       alignment= ft.MainAxisAlignment.CENTER)
 
