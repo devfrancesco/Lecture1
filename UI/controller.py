@@ -101,18 +101,18 @@ class Controller:
             self._view.update_page()
         else:
             self._view._lvOut.controls.append(ft.Text("\n"))
-            self._view._lvout.controls.append(
+            self._view._lvOut.controls.append(
                 ft.Text(f"Ho processato correttamente {len(ordini)} ordini", color="green"))
             for o in ordini:
                 self._view._lvOut.controls.append(ft.Text("\n"))
-                self._view._lvout.controls.append(
+                self._view._lvOut.controls.append(
                     ft.Text(o.riepilogo()))
             self._view.update_page()
 
     def stampa_sommario(self, e):
         self._view._lvOut.controls.clear()
-        self._view._lvout.controls.append(
+        self._view._lvOut.controls.append(
             ft.Text("Di seguito il sommario dello stato del business.", color="Orange")
         )
-        self._view._lvout.controls.append(ft.Text(self._model.get_riepilogo()))
+        self._view._lvOut.controls.append(ft.Text(self._model.get_riepilogo()))
         self._view.update_page()

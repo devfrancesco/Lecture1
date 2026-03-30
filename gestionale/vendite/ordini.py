@@ -1,7 +1,7 @@
 from dataclasses import dataclass
 
-from gestionale.core.clienti import ClienteRecord
-from gestionale.core.prodotti import ProdottoRecord
+from gestionale.core.cliente import ClienteRecord
+from gestionale.core.prodotto import ProdottoRecord
 
 
 @dataclass
@@ -29,7 +29,7 @@ class Ordine:
     def riepilogo(self):
         """Restituisce un riepilogo testuale dell'ordine"""
         linee = [
-            f"Ordine per: {self.cliente.name} ({self.cliente.email})",
+            f"Ordine per: {self.cliente.name} ({self.cliente.mail})",
             f"Categoria cliente: {self.cliente.categoria}",
             "-"*50
         ]
@@ -46,7 +46,6 @@ class Ordine:
         linee.append(f"Totale lordo (IVA22%): {self.totale_lordo(0.22):.2f}$")
 
         return "\n".join(linee)
-
 
 @dataclass
 class OrdineConSconto(Ordine):

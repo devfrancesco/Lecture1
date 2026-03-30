@@ -23,7 +23,7 @@ class View:
         self._txtInNomeC = ft.TextField(label="Nome cliente", width=200)
         self._txtInMail = ft.TextField(label="Mail", width=200)
         self._txtInCategoria = ft.TextField(label="Categoria", width=200)
-        row2 = ft.Row([self._txtInNomeC, self._txtMail, self._txtCategoria],
+        row2 = ft.Row([self._txtInNomeC, self._txtInMail, self._txtInCategoria],
                       alignment= ft.MainAxisAlignment.CENTER)
 
         #Buttons
